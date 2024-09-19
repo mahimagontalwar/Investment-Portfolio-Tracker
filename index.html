@@ -2,43 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Investment Portfolio Tracker</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Investment Portfolio Tracker</h1>
-        <div class="total-value">
-            Total Portfolio Value: <span id="total-value">$0.00</span>
+        <h2>Total Portfolio Value: $<span id="total-value">0</span></h2>
+        
+        <button id="add-investment-btn">Add New Investment</button>
+
+        <div id="investment-list">
+            <h3>Investment List:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Asset Name</th>
+                        <th>Invested</th>
+                        <th>Current Value</th>
+                        <th>% Change</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="investment-table-body">
+                    <!-- Investments will be dynamically added here -->
+                </tbody>
+            </table>
         </div>
-        <form id="add-investment-form">
-            <h2>Add New Investment</h2>
+
+        <div id="investment-form" class="hidden">
+            <h3 id="form-title">Add New Investment</h3>
             <label for="asset-name">Asset Name:</label>
             <input type="text" id="asset-name" required>
+            
             <label for="amount-invested">Amount Invested:</label>
-            <input type="number" id="amount-invested" step="0.01" required>
+            <input type="number" id="amount-invested" required>
+            
             <label for="current-value">Current Value:</label>
-            <input type="number" id="current-value" step="0.01" required>
-            <button type="submit">Add Investment</button>
-        </form>
-        <h2>Investment List</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Asset Name</th>
-                    <th>Invested</th>
-                    <th>Current</th>
-                    <th>% Change</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="portfolio-list"></tbody>
-        </table>
-        <h2>Portfolio Distribution</h2>
+            <input type="number" id="current-value" required>
+
+            <button id="submit-investment-btn">Add Investment</button>
+            <button id="cancel-btn">Cancel</button>
+        </div>
+
         <canvas id="portfolio-chart" width="400" height="400"></canvas>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
